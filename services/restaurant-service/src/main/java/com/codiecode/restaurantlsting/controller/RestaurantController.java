@@ -1,6 +1,6 @@
 package com.codiecode.restaurantlsting.controller;
 
-import com.codiecode.restaurantlsting.dto.RestaurantDTO;
+import com.codiecode.common.dto.RestaurantDTO;
 import com.codiecode.restaurantlsting.service.RestaurantService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

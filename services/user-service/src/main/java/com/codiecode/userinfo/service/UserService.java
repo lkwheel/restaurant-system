@@ -1,8 +1,8 @@
 package com.codiecode.userinfo.service;
 
-import com.codiecode.userinfo.dto.UserDTO;
+import com.codeicode.common.dto.UserDTO;
+import com.codeicode.common.exception.ResourceNotFoundException;
 import com.codiecode.userinfo.entity.User;
-import com.codiecode.userinfo.exception.ResourceNotFoundException;
 import com.codiecode.userinfo.repo.UserRepo;
 import org.springframework.stereotype.Service;
 

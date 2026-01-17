@@ -1,4 +1,4 @@
-package com.codeicode.common.dto;
+package com.codiecode.common.dto;
 
 public class RestaurantDTO {
     private Long id;

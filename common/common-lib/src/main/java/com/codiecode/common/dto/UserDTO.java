@@ -1,4 +1,4 @@
-package com.codiecode.userinfo.dto;
+package com.codiecode.common.dto;
 
 public class UserDTO {
     private Long userId;

@@ -1,9 +1,9 @@
 package com.codiecode.restaurantlsting.service;
 
-import com.codiecode.restaurantlsting.dto.RestaurantDTO;
 import com.codiecode.restaurantlsting.entity.Restaurant;
-import com.codiecode.restaurantlsting.exception.ResourceNotFoundException;
 import com.codiecode.restaurantlsting.repo.RestaurantRepo;
+import com.codiecode.common.dto.RestaurantDTO;
+import com.codiecode.common.exception.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

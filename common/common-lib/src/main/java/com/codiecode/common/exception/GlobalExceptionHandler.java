@@ -1,4 +1,4 @@
-package com.codiecode.restaurantlsting.exception;
+package com.codiecode.common.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

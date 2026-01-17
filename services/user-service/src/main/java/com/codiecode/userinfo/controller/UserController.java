@@ -1,6 +1,6 @@
 package com.codiecode.userinfo.controller;
 
-import com.codiecode.userinfo.dto.UserDTO;
+import com.codeicode.common.dto.UserDTO;
 import com.codiecode.userinfo.service.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

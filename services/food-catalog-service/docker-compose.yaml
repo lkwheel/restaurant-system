@@ -1,0 +1,13 @@
+services:
+  mysql-db:
+    image: 'mysql:9.1' # Latest stable in 2026
+    environment:
+      - 'MYSQL_DATABASE=foodcatalog_db'
+      - 'MYSQL_ROOT_PASSWORD=root'
+      - 'MYSQL_USER=user'
+      - 'MYSQL_PASSWORD=password'
+    ports:
+      - '3306' # Leaving it like this lets Docker pick a free random port
+    volumes:
+      # This line maps your script into the container
+      - ./db-init:/docker-entrypoint-initdb.d

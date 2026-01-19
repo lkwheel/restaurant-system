@@ -1,0 +1,9 @@
+services:
+  mongodb:
+    image: 'mongo:7.0' # Stable version for 2026
+    environment:
+      - MONGO_INITDB_DATABASE=order_db
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=password
+    ports:
+      - '27017' # Default MongoDB port

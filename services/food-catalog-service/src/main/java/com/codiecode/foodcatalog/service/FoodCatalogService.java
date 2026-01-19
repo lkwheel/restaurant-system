@@ -57,8 +57,7 @@ public class FoodCatalogService {
 
     private RestaurantDTO fetchRestaurantFromRestaurantMS(Long restaurantId) {
         String url = String.format("%s/%s/%d", RESTAURANT_SERVICE_URL, GET_RESTAURANT_ENDPOINT, restaurantId);
-        RestaurantDTO restaurantDTO = this.restTemplate.getForObject(url, RestaurantDTO.class);
-        return restaurantDTO;
+        return this.restTemplate.getForObject(url, RestaurantDTO.class);
     }
 
     private FoodCatalogPage createFoodCatalogPage(List<FoodItem> foodItemList, RestaurantDTO restaurantDTO) {

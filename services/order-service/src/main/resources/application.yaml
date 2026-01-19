@@ -1,0 +1,46 @@
+server:
+  port: 9094
+
+eureka:
+  client:
+    service-url:
+      default-zone: http://localhost:8761/eureka/
+
+spring:
+  application:
+    name: ORDER-SERVICE
+
+  data:
+    mongodb:
+      uri: mongodb://${mongodb.user:admin}:${mongodb.password:password}@${mongodb.host:localhost}:${mongodb.port:27017}/order_db?authSource=admin
+      auto-index-creation: true
+
+  docker:
+    compose:
+      lifecycle-management: start-only
+
+# 1. Expose the endpoint over the web
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+
+  # 2. Enable the Java and Env info contributors (Disabled by default in 3.x)
+  info:
+    env:
+      enabled: true
+    java:
+      enabled: true
+    os:
+      enabled: true
+
+# Custom path for Swagger UI
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+# Include Actuator endpoints in the documentation
+  show-actuator: true
+
+# Package to scan for controllers
+  packages-to-scan: com.codiecode.order.controller

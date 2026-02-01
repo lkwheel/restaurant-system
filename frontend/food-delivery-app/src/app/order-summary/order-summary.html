@@ -1,0 +1,85 @@
+<main class="main-content">
+  @if (isFetching()) {
+    <div class="loader-container">
+      <div class="spinner"></div>
+      <p>Processing your order...</p>
+    </div>
+  }
+
+  @if (errorMessage()) {
+    <div class="error-banner">
+      <i class="fa fa-exclamation-circle"></i>
+      <span>{{ errorMessage() }}</span>
+    </div>
+  }
+
+  @if (order(); as currentOrder) {
+    <div class="order-summary-card">
+      <h1>Order Summary</h1>
+      <div class="restaurant-info">
+        <h3>{{ currentOrder.restaurant?.name }}</h3>
+        <p>{{ currentOrder.restaurant?.address }}</p>
+        <p>{{ currentOrder.restaurant?.city }}</p>
+      </div>
+
+      <table class="summary-table">
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th>Quantity</th>
+            <th class="text-right">Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (item of currentOrder.foodItemDTOList; track item.id) {
+            <tr>
+              <td>{{ item.itemName }}</td>
+              <td>x {{ item.quantity }}</td>
+              <td class="text-right">
+                &#x20b9; {{ item.price * item.quantity }}
+              </td>
+            </tr>
+          }
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="2" class="total-label">Grand Total</td>
+            <td class="total-value text-right">&#x20b9; {{ total() }}</td>
+          </tr>
+        </tfoot>
+      </table>
+
+      <button
+        class="place-order-btn"
+        (click)="saveOrder()"
+        [disabled]="isFetching()"
+      >
+        @if (isFetching()) {
+          Initializing...
+        } @else {
+          Place Order
+        }
+      </button>
+    </div>
+  } @else if (!isFetching()) {
+    <div class="empty-state">
+      <p>No active order found.</p>
+      <button (click)="router.navigate(['/restaurants'])">
+        Go to Restaurants
+      </button>
+    </div>
+  }
+
+  @if (showDialog()) {
+    <div class="dialog-overlay">
+      <div class="dialog-box">
+        <div class="success-icon">✓</div>
+        <h2>Order Placed!</h2>
+        <p>Your delicious meal is being prepared.</p>
+        <button class="close-btn" (click)="closeDialog()">
+          Back to Home
+        </button>
+      </div>
+    </div>
+  }
+</main>

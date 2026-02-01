@@ -1,0 +1,40 @@
+<main class="main-content my-gap">
+  @if (isFetching()) {
+    <div class="loader-container">
+      <div class="spinner"></div>
+      <p>Finding the best spots for you...</p>
+    </div>
+  }
+
+  @if (errorMessage()) {
+    <div class="error-banner">
+      <i class="fa fa-exclamation-circle"></i>
+      <span>{{ errorMessage() }}</span>
+      <button (click)="restaurantService.loadAllRestaurants()">Retry</button>
+    </div>
+  }
+
+  <div class="restaurant-grid">
+    @for (restaurant of restaurantList(); track restaurant.id) {
+      <div class="restaurant-card">
+        <div class="restaurant-image">
+          <img [src]="getRandomImage()" Ï alt="Restaurant" />
+        </div>
+        <div class="restaurant-details">
+          <h3 class="restaurant-name">{{ restaurant.name }}</h3>
+          <div class="restaurant-rating">
+            <span class="rating"><i class="fa fa-star"></i>4.5</span>
+            <span class="rating-count">(500+)</span>
+          </div>
+          <button class="order-btn" (click)="onButtonClick(restaurant.id)">
+            Order Now
+          </button>
+        </div>
+      </div>
+    } @empty {
+      @if (!isFetching() && !errorMessage()) {
+        <p class="empty-state">No restaurants found in your area.</p>
+      }
+    }
+  </div>
+</main>

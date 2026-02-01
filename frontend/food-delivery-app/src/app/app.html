@@ -1,0 +1,9 @@
+<app-header></app-header>
+@if (error()) {
+  <app-error-modal title="An error occurred" [message]="error()" />
+}
+<main>
+  <div>
+    <router-outlet></router-outlet>
+  </div>
+</main>

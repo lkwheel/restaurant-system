@@ -1,7 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { inject, Injectable, signal } from '@angular/core';
 import { environment } from '../../../environments/environment';
-import { FoodCatalogPage } from '../../shared/model/foodCataloguePage';
 import { catchError, finalize, Observable, throwError } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })

@@ -37,6 +37,6 @@ export class RestaurantListing implements OnInit {
   }
 
   onButtonClick(id: number) {
-    this.router.navigate(['/food-catalogue', id]);
+    this.router.navigate(['/food-catalog', id]);
   }
 }

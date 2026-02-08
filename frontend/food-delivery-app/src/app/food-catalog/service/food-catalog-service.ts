@@ -1,13 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable, signal } from '@angular/core';
 import { environment } from '../../../environments/environment';
-import { FoodCatalogPage } from '../../shared/model/foodCataloguePage';
 import { catchError, finalize, throwError } from 'rxjs';
+import { FoodCatalogPage } from '../../shared/model/foodCatalogPage';
 
 @Injectable({ providedIn: 'root' })
 export class FoodCatalogService {
   private http = inject(HttpClient);
-  private readonly apiUrl = `${environment.foodCatalogueApi}/foodCatalog`;
+  private readonly apiUrl = `${environment.foodCatalogApi}/foodCatalog`;
 
   private _foodCatalogPage = signal<FoodCatalogPage | undefined>(undefined);
   private _isFetching = signal(false);

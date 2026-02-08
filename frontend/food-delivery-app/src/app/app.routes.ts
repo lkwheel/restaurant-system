@@ -8,7 +8,7 @@ import { OrderService } from './order-summary/service/order-service';
 export const routes: Routes = [
   { path: '', component: RestaurantListing },
   { path: 'restaurants', component: RestaurantListing },
-  { path: 'food-catalogue/:restaurantId', component: FoodCatalog },
+  { path: 'food-catalog/:restaurantId', component: FoodCatalog },
   { 
     path: 'orderSummary', 
     component: OrderSummary,

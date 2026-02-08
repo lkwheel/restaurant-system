@@ -37,8 +37,8 @@ query_db "restaurant-system-catalog-db-1" "food_catalog_db" "food_item" "root"
 query_db "restaurant-system-user-db-1" "user_db" "user" "root"
 
 # 4. Check Order DB (MongoDB)
-echo -ne "${YELLOW}Checking order-db (orders collection)... ${NC}"
-mongo_count=$(docker exec restaurant-system-order-db-1 mongosh --quiet --username admin --password password --authenticationDatabase admin --eval "db.getSiblingDB('order_db').orders.countDocuments()" 2>/dev/null)
+echo -ne "${YELLOW}Checking order-db (order collection)... ${NC}"
+mongo_count=$(docker exec restaurant-system-order-db-1 mongosh --quiet --username admin --password password --authenticationDatabase admin --eval "db.getSiblingDB('order_db').order.countDocuments()" 2>/dev/null)
 
 if [ $? -eq 0 ]; then
     echo -e "${GREEN}SUCCESS: ${mongo_count} documents found.${NC}"

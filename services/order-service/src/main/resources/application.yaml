@@ -4,7 +4,12 @@ server:
 eureka:
   client:
     service-url:
-      default-zone: http://localhost:8761/eureka/
+      # Change default-zone to defaultZone
+      defaultZone: http://${EUREKA_SERVER:localhost}:8761/eureka/
+  instance:
+    # Crucial for Docker: Use the container name for registration
+    prefer-ip-address: true 
+    instance-id: ${spring.application.name}:${random.value}
 
 spring:
   application:
@@ -12,11 +17,12 @@ spring:
 
   data:
     mongodb:
-      uri: mongodb://${mongodb.user:admin}:${mongodb.password:password}@${mongodb.host:localhost}:${mongodb.port:27017}/order_db?authSource=admin
+      uri: mongodb://${MONGODB_USER:admin}:${MONGODB_PASSWORD:password}@${MONGODB_HOST:localhost}:${MONGODB_PORT:27017}/order_db?authSource=admin
       auto-index-creation: true
 
   docker:
     compose:
+      enabled: false
       lifecycle-management: start-only
 
 # 1. Expose the endpoint over the web

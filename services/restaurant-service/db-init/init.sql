@@ -1,10 +1,13 @@
+CREATE DATABASE IF NOT EXISTS restaurant_db;
+USE restaurant_db;
+
 CREATE TABLE IF NOT EXISTS restaurant
 (
     id                    BIGINT AUTO_INCREMENT PRIMARY KEY,
     name                  VARCHAR(255) NOT NULL,
     city                  VARCHAR(100),
     address               VARCHAR(255),
-    restaurantDescription TEXT
+    restaurant_description TEXT
 );
 
 INSERT INTO restaurant (id, address, city, name, restaurant_description)

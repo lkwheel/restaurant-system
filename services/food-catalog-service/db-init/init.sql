@@ -1,3 +1,6 @@
+CREATE DATABASE IF NOT EXISTS food_catalog_db;
+USE food_catalog_db;
+
 CREATE TABLE IF NOT EXISTS food_item
 (
     id               BIGINT AUTO_INCREMENT PRIMARY KEY,

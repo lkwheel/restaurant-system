@@ -1,3 +1,6 @@
+CREATE DATABASE IF NOT EXISTS user_db;
+USE user_db;
+
 CREATE TABLE IF NOT EXISTS user
 (
     user_id

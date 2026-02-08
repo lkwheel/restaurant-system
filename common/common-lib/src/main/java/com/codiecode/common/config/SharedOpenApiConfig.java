@@ -12,7 +12,7 @@ public class SharedOpenApiConfig {
     @Bean
     public OpenAPI customOpenAPI(
             @Value("${spring.application.name:Service API}") String appName,
-            @Value("${app.version:1.0.0}") String appVersion) {
+            @Value("${app.version:1.0.1-SNAPSHOT}") String appVersion) {
 
         return new OpenAPI()
                 .info(new Info()

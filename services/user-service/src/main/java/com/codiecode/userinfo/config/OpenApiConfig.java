@@ -14,6 +14,6 @@ public class OpenApiConfig {
                 .info(new Info()
                         .title("User Info API")
                         .description("Spring Boot 3.5 API for managing users")
-                        .version("v1.0.0"));
+                        .version("v1.0.1-SNAPSHOT"));
     }
 }

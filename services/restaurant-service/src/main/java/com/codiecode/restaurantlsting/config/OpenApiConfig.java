@@ -14,6 +14,6 @@ public class OpenApiConfig {
                 .info(new Info()
                         .title("Restaurant API")
                         .description("Spring Boot 3.5 API for managing restaurants")
-                        .version("v1.0.0"));
+                        .version("v1.0.1-SNAPSHOT"));
     }
 }

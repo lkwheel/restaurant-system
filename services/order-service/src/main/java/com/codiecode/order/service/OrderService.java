@@ -15,7 +15,7 @@ import java.util.List;
 public class OrderService {
 
     private static final String USER_SERVICE_URL = "http://USER-SERVICE";
-    private static final String GET_USER_ENDPOINT = "user/fetchById";
+    private static final String GET_USER_ENDPOINT = "v1/api/user/fetchById";
 
     private final OrderRepo orderRepo;
     private final SequenceGenerator sequenceGenerator;

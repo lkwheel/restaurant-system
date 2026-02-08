@@ -6,7 +6,7 @@ import { catchError, finalize, Observable, throwError } from 'rxjs';
 @Injectable({ providedIn: 'root' })
 export class OrderService {
   private http = inject(HttpClient);
-  private readonly apiUrl = `${environment.orderApi}/order`;
+  private readonly apiUrl = `${environment.orderApi}/api/v1/order`;
 
   httpOptions = {
     headers: new HttpHeaders({

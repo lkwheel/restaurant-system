@@ -7,7 +7,7 @@ import { FoodCatalogPage } from '../../shared/model/foodCatalogPage';
 @Injectable({ providedIn: 'root' })
 export class FoodCatalogService {
   private http = inject(HttpClient);
-  private readonly apiUrl = `${environment.foodCatalogApi}/foodCatalog`;
+  private readonly apiUrl = `${environment.foodCatalogApi}/api/v1/foodCatalog`;
 
   private _foodCatalogPage = signal<FoodCatalogPage | undefined>(undefined);
   private _isFetching = signal(false);

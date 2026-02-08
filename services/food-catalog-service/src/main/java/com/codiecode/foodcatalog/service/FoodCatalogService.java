@@ -14,7 +14,7 @@ import java.util.List;
 public class FoodCatalogService {
 
     private static final String RESTAURANT_SERVICE_URL = "http://RESTAURANT-SERVICE";
-    private static final String GET_RESTAURANT_ENDPOINT = "restaurant/fetchById";
+    private static final String GET_RESTAURANT_ENDPOINT = "api/v1/restaurant/fetchById";
 
     private final FoodItemRepo foodItemRepo;
     private final RestTemplate restTemplate;

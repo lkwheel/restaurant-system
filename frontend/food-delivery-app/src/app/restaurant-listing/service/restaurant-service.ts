@@ -7,7 +7,7 @@ import { Restaurant } from '../../shared/model/restaurant';
 @Injectable({ providedIn: 'root' })
 export class RestaurantService {
   private http = inject(HttpClient);
-  private readonly apiUrl = `${environment.restaurantApi}/restaurant`;
+  private readonly apiUrl = `${environment.restaurantApi}/api/v1/restaurant`;
 
   // Internal signals (private so components can't modify them directly)
   private _restaurants = signal<Restaurant[]>([]);

@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/restaurant")
+@RequestMapping("/api/v1/restaurant")
 @CrossOrigin
 public class RestaurantController {
 

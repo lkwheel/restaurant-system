@@ -7,12 +7,12 @@
     <parent>
         <groupId>com.codiecode</groupId>
         <artifactId>food-delivery-parent</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
+        <version>1.0.0</version>
         <relativePath>../../pom.xml</relativePath>
     </parent>
 
     <artifactId>restaurant-service</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0.0</version>
     <name>restaurant-service</name>
 
     <dependencies>
@@ -48,7 +48,7 @@
         <dependency>
             <groupId>com.codiecode</groupId>
             <artifactId>common-lib</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
+            <version>1.0.0</version>
         </dependency>
 
         <dependency>

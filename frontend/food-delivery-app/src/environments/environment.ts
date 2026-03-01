@@ -1,5 +1,5 @@
 export const environment = {
-  production: false,
+  production: true,
   // Point these to your local Spring Boot / Gateway ports
   restaurantApi: 'http://localhost:9091',
   userApi: 'http://localhost:9093',

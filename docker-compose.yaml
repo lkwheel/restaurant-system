@@ -4,6 +4,7 @@ services:
     build:
       context: .
       dockerfile: services/eureka-server/Dockerfile
+    image: eureka-server:latest
     ports:
       - "8761:8761"
     environment:
@@ -112,6 +113,7 @@ services:
     build:
       context: .
       dockerfile: services/restaurant-service/Dockerfile
+    image: restaurant-service:latest
     ports:
       - "9091:9091"
     environment:
@@ -137,6 +139,7 @@ services:
     build:
       context: .
       dockerfile: services/food-catalog-service/Dockerfile
+    image: food-catalog-service:latest
     ports:
       - "9092:9092"
     environment:
@@ -162,6 +165,7 @@ services:
     build:
       context: .
       dockerfile: services/user-service/Dockerfile
+    image: user-service:latest
     ports:
       - "9093:9093"
     environment:
@@ -187,6 +191,7 @@ services:
     build:
       context: .
       dockerfile: services/order-service/Dockerfile
+    image: order-service:latest
     ports:
       - "9094:9094"
     environment:
@@ -214,6 +219,7 @@ services:
     build:
       context: ./frontend/food-delivery-app
       dockerfile: Dockerfile
+    image: frontend:latest
     ports:
       - "4200:80"
     deploy:

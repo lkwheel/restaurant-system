@@ -4,16 +4,16 @@ import java.util.List;
 
 public class OrderDTO {
     private Integer orderId;
-    private List<FoodItemDTO> foodItemsList;
+    private List<FoodItemDTO> foodItemDTOList;
     private Long userId;
     private RestaurantDTO restaurant;
 
     public OrderDTO() {
     }
 
-    public OrderDTO(Integer orderId, List<FoodItemDTO> foodItemsList, Long userId, RestaurantDTO restaurant) {
+    public OrderDTO(Integer orderId, List<FoodItemDTO> foodItemDTOList, Long userId, RestaurantDTO restaurant) {
         this.orderId = orderId;
-        this.foodItemsList = foodItemsList;
+        this.foodItemDTOList = foodItemDTOList;
         this.userId = userId;
         this.restaurant = restaurant;
     }
@@ -26,12 +26,12 @@ public class OrderDTO {
         this.orderId = orderId;
     }
 
-    public List<FoodItemDTO> getFoodItemsList() {
-        return foodItemsList;
+    public List<FoodItemDTO> getFoodItemDTOList() {
+        return foodItemDTOList;
     }
 
-    public void setFoodItemsList(List<FoodItemDTO> foodItemsList) {
-        this.foodItemsList = foodItemsList;
+    public void setFoodItemDTOList(List<FoodItemDTO> foodItemsList) {
+        this.foodItemDTOList = foodItemsList;
     }
 
     public Long getUserId() {

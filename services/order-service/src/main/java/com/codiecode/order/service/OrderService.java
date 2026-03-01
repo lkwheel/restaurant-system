@@ -29,7 +29,7 @@ public class OrderService {
 
 
     private UserDTO fetchUserById(Long userId) {
-        String url = String.format("%s/%s/%d", USER_SERVICE_URL, GET_USER_ENDPOINT, userId);
+        String url = USER_SERVICE_URL + "/" + GET_USER_ENDPOINT + "/" + userId;
         return restTemplate.getForObject(url, UserDTO.class);
     }
 
@@ -38,7 +38,7 @@ public class OrderService {
         UserDTO user = fetchUserById(order.getUserId());
         Order orderToAdd = new Order(
                 newOrderId,
-                order.getFoodItemsList(),
+                order.getFoodItemDTOList(),
                 order.getRestaurant(),
                 user
         );

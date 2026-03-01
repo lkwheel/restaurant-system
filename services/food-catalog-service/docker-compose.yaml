@@ -2,6 +2,7 @@ services:
   mysql-db:
     image: 'mysql:9.1' # Latest stable in 2026
     environment:
+      - SPRING_PROFILES_ACTIVE=dev
       - 'MYSQL_DATABASE=food_catalog_db'
       - 'MYSQL_ROOT_PASSWORD=root'
       - 'MYSQL_USER=user'

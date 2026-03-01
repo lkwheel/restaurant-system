@@ -18,8 +18,10 @@ spring:
     compose:
       enabled: false
   jpa:
+    database-platform: org.hibernate.dialect.MySQLDialect
     hibernate:
       ddl-auto: update
+    show-sql: true
 
 # 1. Expose the endpoint over the web
 management:

@@ -1,0 +1,11 @@
+# This is the development configuration for the Restaurant Service.
+eureka:
+  client:
+    service-url:
+      # Change default-zone to defaultZone
+      defaultZone: http://${EUREKA_SERVER:localhost}:8761/eureka/
+
+spring:
+  docker:
+    compose:
+      enabled: true

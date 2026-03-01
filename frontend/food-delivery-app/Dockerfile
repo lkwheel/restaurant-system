@@ -1,5 +1,6 @@
 # Stage 1: Build the Angular app
 FROM node:24.5.0-alpine AS build
+
 WORKDIR /app
 
 # Install dependencies first (better caching)
@@ -12,12 +13,22 @@ RUN npm run build -- --configuration production
 
 # Stage 2: Serve the app with Nginx
 FROM nginx:stable-alpine
-# Copy the build output from the first stage
-# Note: Angular 20 build output is usually in dist/food-delivery-app/browser
-COPY --from=build /app/dist/food-delivery-app/browser /usr/share/nginx/html
 
-# Copy a custom nginx config to handle Angular routing (Deep Linking)
-COPY nginx.conf /etc/nginx/conf.d/default.conf
+# Install envsubst (standard in alpine)
+RUN apk add --no-cache gettext
+
+WORKDIR /usr/share/nginx/html
+# Copy build output
+COPY --from=build /app/dist/food-delivery-app/browser .
+
+# 1. Move the real config to a template
+RUN mv config.json config.template.json
+
+# 2. Create a startup script
+RUN echo 'envsubst < config.template.json > config.json && exec nginx -g "daemon off;"' > /entrypoint.sh
+
+RUN chmod +x /entrypoint.sh
 
 EXPOSE 80
+ENTRYPOINT ["/bin/sh", "/entrypoint.sh"]
 CMD ["nginx", "-g", "daemon off;"]

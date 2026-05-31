@@ -1,0 +1,20 @@
+# This is the cloud configuration for the Restaurant Service.
+eureka:
+  client:
+    service-url:
+      # Kubernetes environment
+      # EUREKA_SERVER: eureka-0.eureka-server.default.svc.cluster.local
+      # defaultZone: http://eureka-0.eureka-server.default.svc.cluster.local:8761/eureka
+      # http - protocol
+      # eureka-0 - hostname of the Eureka server within the Kubernetes cluster
+      #            the "0" in the hostname suggests that it might be the first
+      #            instance of the Eureka server.
+      # eureka-server - the name of the Kubernetes service associated with the Eureka server
+      # default - this is the namespace in which the Eureka service and pods are deployed.
+      #           Kubernetes namespaces provide a way to isolate resources within a cluster.
+      # svc.cluster.local - this is the domain suffix for Kubernetes services within the cluster
+      # 8761 - port for Eureka server
+      # /eureka - this is the endpoint within the Eureka server
+      defaultZone: http://eureka-0.eureka-server.default.svc.cluster.local:8761/eureka
+  instance:
+    hostname: eureka-0

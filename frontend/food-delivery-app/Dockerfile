@@ -9,26 +9,22 @@ RUN npm install
 
 # Copy the rest of the code and build
 COPY . .
+# This command pulls values from src/environments/environment.prod.ts
 RUN npm run build -- --configuration production
 
 # Stage 2: Serve the app with Nginx
 FROM nginx:stable-alpine
 
-# Install envsubst (standard in alpine)
-RUN apk add --no-cache gettext
-
 WORKDIR /usr/share/nginx/html
-# Copy build output
+
+# Clean the default nginx directory
+RUN rm -rf ./*
+
+# Copy build output from Stage 1
+# Note: Ensure the path 'dist/food-delivery-app/browser' matches your angular.json output path
 COPY --from=build /app/dist/food-delivery-app/browser .
 
-# 1. Move the real config to a template
-RUN mv config.json config.template.json
-
-# 2. Create a startup script
-RUN echo 'envsubst < config.template.json > config.json && exec nginx -g "daemon off;"' > /entrypoint.sh
-
-RUN chmod +x /entrypoint.sh
-
+# Standard Nginx configuration is usually sufficient
 EXPOSE 80
-ENTRYPOINT ["/bin/sh", "/entrypoint.sh"]
+
 CMD ["nginx", "-g", "daemon off;"]

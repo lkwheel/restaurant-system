@@ -225,7 +225,7 @@ services:
     deploy:
       resources:
         limits:
-          memory: 256M # Nginx is very light
+          memory: 256M
     networks:
       - food-delivery-net
 

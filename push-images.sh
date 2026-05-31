@@ -2,30 +2,40 @@
 
 # Configuration
 DOCKER_USER="lkwheel"
-TAG="1.0.0"
-SERVICES=("eureka-server" "restaurant-service" "food-catalog-service" "user-service" "order-service" "frontend")
+TAG="1.0.1-SNAPSHOT"
+SERVICES=("eureka-server" "restaurant-service" "food-catalog-service" "user-service" "order-service")
 
-echo -e "\033[0;34m--- Starting Docker Hub Push for Version $TAG ---\033[0m"
+echo -e "\033[0;34m--- Phase 1: Building Java Artifacts ---\033[0m"
+# Build the JARs first so the Dockerfiles have fresh files to copy
+mvn clean package -DskipTests
 
-# 1. Login to Docker Hub
-echo "Logging into Docker Hub..."
-docker login
-
-# 2. Tag and Push each service
+echo -e "\033[0;34m--- Phase 2: Building & Tagging Docker Images ---\033[0m"
+# 1. Build the Backend Images
 for SERVICE in "${SERVICES[@]}"
 do
-    echo -e "\033[0;32mProcessing $SERVICE...\033[0m"
+    echo -e "\033[0;32mBuilding $SERVICE...\033[0m"
+    docker build -t ${SERVICE}:latest -f services/${SERVICE}/Dockerfile .
     
-    # Tag the local image for Docker Hub
-    # Note: This assumes your local images are named after the service (check 'docker images')
+    # Tag for Docker Hub
     docker tag ${SERVICE}:latest ${DOCKER_USER}/food-delivery-${SERVICE}:${TAG}
     docker tag ${SERVICE}:latest ${DOCKER_USER}/food-delivery-${SERVICE}:latest
-
-    # Push the versioned tag
-    docker push ${DOCKER_USER}/food-delivery-${SERVICE}:${TAG}
-    
-    # Push the 'latest' tag
-    docker push ${DOCKER_USER}/food-delivery-${SERVICE}:latest
 done
 
-echo -e "\033[0;34m--- Push Complete! ---\033[0m"
+# 2. Build the Frontend Image
+echo -e "\033[0;32mBuilding Frontend...\033[0m"
+docker build -t frontend:latest ./frontend/food-delivery-app
+docker tag frontend:latest ${DOCKER_USER}/food-delivery-frontend:${TAG}
+docker tag frontend:latest ${DOCKER_USER}/food-delivery-frontend:latest
+
+echo -e "\033[0;34m--- Phase 3: Pushing to Docker Hub ---\033[0m"
+docker login
+
+# Push all (Backend + Frontend)
+ALL_REPOS=("${SERVICES[@]}" "frontend")
+for REPO in "${ALL_REPOS[@]}"
+do
+    docker push ${DOCKER_USER}/food-delivery-${REPO}:${TAG}
+    docker push ${DOCKER_USER}/food-delivery-${REPO}:latest
+done
+
+echo -e "\033[0;34m--- Release $TAG Complete! ---\033[0m"
